@@ -1,5 +1,6 @@
 import React from "react";
 import Player from "./Player.jsx";
+import { Form, Input,Button } from "antd";
 class Home extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -19,7 +20,10 @@ class Home extends React.PureComponent {
   }
 
   announce = () => {
-    this.setState({ playerNames: ["LiLei", "Nancy", "Alexendar"] });
+    this.setState({ playerNames: ["LiLei1", "Nancy", "Alexendar"] });
+  };
+  onFinish = (values) => {
+    console.log(values)
   };
   render() {
     return (
@@ -30,6 +34,19 @@ class Home extends React.PureComponent {
         {this.state.playerNames.map((item) => (
           <Player name={item} />
         ))}
+        <Form onFinish={this.onFinish} style={{paddingLeft:200}}>
+          <Form.Item name="userName">
+            <Input />
+          </Form.Item>
+          <Form.Item name="userName1">
+            <Input />
+          </Form.Item>
+          <Form.Item name="userName2">
+            <Input />
+          </Form.Item>
+          <Button type="primary" htmlType="submit">提交</Button>
+        </Form>
+
       </div>
     );
   }
